@@ -1,0 +1,745 @@
+
+
+   /* 1. CSS CUSTOM PROPERTIES (variables) */
+  
+
+:root {
+  --color-purple:      #18776E;  /* Primary brand colour                */
+  --color-purple-dark: #123747;  /* Darker shade for gradients/hover    */
+  --color-gold:        #F2B84B;  /* Accent colour – highlights, borders  */
+  --color-gold-dark:   #B87921;  /* Darker amber for hover states        */
+  --color-white:       #FFFFFF;
+  --color-light-gray:  #F7F7F2;  /* Page/sidebar background             */
+  --color-dark-text:   #1A1A2E;  /* Body text colour                    */
+  --color-muted:       #6B7280;  /* Secondary / caption text            */
+
+  --font-heading:  'Playfair Display', Georgia, serif;
+  --font-body:     'Lato', 'Segoe UI', Arial, sans-serif;
+
+  --border-radius: 6px;
+  --box-shadow:    0 2px 12px rgba(18, 55, 71, 0.12);
+}
+
+/* ==========================================================================
+   2. GLOBAL RESET & BASE STYLES
+   ========================================================================== */
+
+/* Base body typography and colour */
+body {
+  font-family: var(--font-body);
+  font-size: 15px;              /* Required: 15 px body font            */
+  line-height: 1.6;             /* Required: comfortable reading        */
+  color: var(--color-dark-text);
+  background-color: var(--color-light-gray);
+  margin: 0;
+  padding: 68px 0 0;
+}
+
+html {
+  scroll-padding-top: 68px;
+}
+
+@media (max-width: 767.98px) {
+  body {
+    padding-top: 60px;
+  }
+
+  html {
+    scroll-padding-top: 60px;
+  }
+}
+
+/* Headings – Playfair Display for the distinctive serif look */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-purple);
+  margin-top: 0;
+}
+
+/* Links – gold accent, no underline until hover */
+a {
+  color: var(--color-purple);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover,
+a:focus {
+  color: var(--color-gold-dark);
+  text-decoration: underline;
+}
+
+/* Images – always scale down to fit their container */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ==========================================================================
+   3. PAGE-WIDTH CONSTRAINT
+   Keeps all content at a max of ~960 px and centres it.
+   Bootstrap's .container handles most of this; we refine here.
+   ========================================================================== */
+
+.page-wrapper {
+  max-width: 960px;
+  margin: 0 auto;             /* Centre horizontally                  */
+  padding-top: 24px;
+  padding-bottom: 40px;
+}
+
+/* ==========================================================================
+   4. SITE HEADER
+   Gradient background from teal to navy, with amber text for the company name.
+   ========================================================================== */
+
+.site-header {
+  background: linear-gradient(135deg, var(--color-purple) 0%, var(--color-purple-dark) 100%);
+  padding: 24px 0 20px;
+  border-bottom: 3px solid var(--color-gold);
+}
+
+/* Inner flex container: logo + text side by side */
+.site-header__inner {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.site-header__brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Logo image – fixed height so it doesn't overwhelm the header */
+.site-header__logo {
+  width: auto;
+  height: 72px;
+  border-radius: 50%;           /* Circular crop for logo               */
+  border: 2px solid var(--color-gold);
+}
+
+/* Company name – gold, large, Playfair Display */
+.site-header__company-name {
+  font-family: var(--font-heading);
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--color-gold);
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+/* Tagline – white, italic, smaller */
+.site-header__tagline {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--color-white);
+  margin: 4px 0 0;
+  opacity: 0.9;
+}
+
+/* ==========================================================================
+   5. BOOTSTRAP NAVBAR OVERRIDES
+   The site-nav class layers on top of Bootstrap's navbar styles.
+   ========================================================================== */
+
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1030;
+  width: 100%;
+  background-color: var(--color-purple-dark);
+  border-bottom: 2px solid var(--color-gold);
+  max-width: 100%;
+}
+
+/* Nav links – white text */
+.site-nav .nav-link {
+  display: inline-block;
+  color: rgba(255, 255, 255, 0.85) !important;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  padding: 10px 16px !important;
+  margin: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--border-radius);
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Hover & focus state */
+.site-nav .nav-link:hover,
+.site-nav .nav-link:focus {
+  color: var(--color-gold) !important;
+  background-color: rgba(255, 255, 255, 0.07);
+  border-color: var(--color-gold);
+}
+
+/* Active page indicator – gold text + bottom border highlight */
+.site-nav .nav-link.active {
+  color: var(--color-gold) !important;
+  font-weight: 700;
+  border-color: var(--color-gold);
+  background-color: rgba(255, 255, 255, 0.07);
+}
+
+/* Hamburger toggler icon colour */
+.site-nav .navbar-toggler {
+  width: 48px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  border-color: var(--color-gold);
+  border-width: 2px;
+  background-color: rgba(255, 255, 255, 0.08);
+}
+.site-nav .navbar-toggler-icon {
+  display: block;
+  width: 24px;
+  height: 20px;
+  background-image: linear-gradient(
+    to bottom,
+    var(--color-gold) 0 2px,
+    transparent 2px 9px,
+    var(--color-gold) 9px 11px,
+    transparent 11px 18px,
+    var(--color-gold) 18px 20px
+  );
+  background-size: 24px 20px;
+  filter: none;
+}
+
+/* ==========================================================================
+   6. HERO BANNER (home page only)
+   Full-width image with a semi-transparent overlay and a tagline.
+   ========================================================================== */
+
+.hero-banner {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  max-height: 380px;             /* Limit the banner height               */
+}
+
+.hero-banner__img {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;             /* Crop to fill without distortion        */
+  object-position: center;
+  display: block;
+}
+
+.hero-ball {
+  position: absolute;
+  z-index: 1;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--color-white);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
+}
+
+.hero-ball--one {
+  top: 14%;
+  left: 10%;
+  animation: hero-ball-drift-one 24s ease-in-out infinite;
+}
+
+.hero-ball--two {
+  top: 60%;
+  left: 73%;
+  width: 9px;
+  height: 9px;
+  animation: hero-ball-drift-two 29s ease-in-out -8s infinite;
+}
+
+.hero-ball--three {
+  top: 35%;
+  left: 42%;
+  width: 15px;
+  height: 15px;
+  animation: hero-ball-drift-three 32s ease-in-out -17s infinite;
+}
+
+@keyframes hero-ball-drift-one {
+  0%, 100% { top: 14%; left: 10%; }
+  25% { top: 57%; left: 37%; }
+  50% { top: 26%; left: 78%; }
+  75% { top: 72%; left: 54%; }
+}
+
+@keyframes hero-ball-drift-two {
+  0%, 100% { top: 60%; left: 73%; }
+  25% { top: 22%; left: 48%; }
+  50% { top: 68%; left: 19%; }
+  75% { top: 12%; left: 66%; }
+}
+
+@keyframes hero-ball-drift-three {
+  0%, 100% { top: 35%; left: 42%; }
+  25% { top: 73%; left: 80%; }
+  50% { top: 18%; left: 58%; }
+  75% { top: 49%; left: 14%; }
+}
+
+/* Dark overlay so text is readable over the image */
+.hero-banner__overlay {
+  position: absolute;
+  inset: 0;                      /* Shorthand for top/right/bottom/left: 0 */
+  background: rgba(18, 55, 71, 0.52);
+  display: flex;
+  align-items: flex-end;
+  padding: 24px 32px;
+}
+
+.hero-banner__slogan {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-style: italic;
+  color: var(--color-white);
+  margin: 0;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* ==========================================================================
+   7. SIDEBAR STYLES (HOME PAGE – left & right sidebars)
+   ========================================================================== */
+
+/* Common sidebar styles */
+.sidebar {
+  background-color: var(--color-white);
+  border: 1px solid rgba(18, 55, 71, 0.15);
+  border-radius: var(--border-radius);
+  padding: 20px 16px;
+  margin-bottom: 24px;
+  box-shadow: var(--box-shadow);
+}
+
+/* Sidebar headings */
+.sidebar__heading {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-purple);
+  border-bottom: 2px solid var(--color-gold);
+  padding-bottom: 6px;
+  margin-bottom: 12px;
+}
+
+.sidebar__heading--secondary {
+  font-size: 0.95rem;
+  margin-top: 20px;
+}
+
+/* Sidebar link lists – no bullets, spaced out */
+.sidebar__list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 12px;
+}
+
+.sidebar__list li {
+  padding: 5px 0;
+  border-bottom: 1px solid var(--color-light-gray);
+  font-size: 0.9rem;
+}
+
+.sidebar__list li:last-child {
+  border-bottom: none;
+}
+
+.sidebar__list a {
+  color: var(--color-purple);
+  font-weight: 400;
+}
+
+.sidebar__list a:hover {
+  color: var(--color-gold-dark);
+}
+
+/* Image-based navigation cards in the home sidebar */
+.sidebar__image-links {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.sidebar__image-link {
+  display: block;
+  overflow: hidden;
+  border: 1px solid rgba(18, 55, 71, 0.15);
+  border-radius: var(--border-radius);
+  background-color: var(--color-light-gray);
+  color: var(--color-purple);
+  font-size: 0.84rem;
+  font-weight: 700;
+  line-height: 1.3;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.sidebar__image-link img {
+  display: block;
+  width: 100%;
+  height: 72px;
+  object-fit: cover;
+}
+
+.sidebar__image-link span {
+  display: block;
+  padding: 7px 8px;
+}
+
+.sidebar__image-link:hover,
+.sidebar__image-link:focus-visible {
+  color: var(--color-purple-dark);
+  border-color: var(--color-gold);
+  box-shadow: var(--box-shadow);
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+
+.sidebar__image-link:focus-visible,
+.sidebar__list a:focus-visible {
+  outline: 2px solid var(--color-gold-dark);
+  outline-offset: 2px;
+}
+
+/* Services list – clean, spacious text links */
+.sidebar__list--services li {
+  padding: 0;
+  margin-bottom: 8px;
+  font-size: 0.88rem;
+  color: var(--color-dark-text);
+}
+
+.sidebar__list--services a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 9px 10px;
+  border: 1px solid rgba(18, 55, 71, 0.12);
+  border-radius: var(--border-radius);
+  background-color: var(--color-light-gray);
+  font-weight: 600;
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+}
+
+.sidebar__list--services a::after {
+  content: "\2192";
+  color: var(--color-purple);
+  font-size: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.sidebar__list--services a:hover,
+.sidebar__list--services a:focus-visible {
+  color: var(--color-gold-dark);
+  border-color: var(--color-gold);
+  background-color: var(--color-white);
+  text-decoration: none;
+  transform: translateX(2px);
+}
+
+.sidebar__list--services a:hover::after,
+.sidebar__list--services a:focus-visible::after {
+  transform: translateX(2px);
+}
+
+/* Small note text in sidebar */
+.sidebar__note {
+  font-size: 0.82rem;
+  color: var(--color-muted);
+  font-style: italic;
+  margin-top: 8px;
+}
+
+/* Testimonial blockquote in sidebar */
+.sidebar__testimonial {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--color-dark-text);
+  border-left: 3px solid var(--color-gold);
+  padding-left: 10px;
+  margin: 0;
+  background-color: var(--color-light-gray);
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  padding: 10px 10px 10px 14px;
+}
+
+.sidebar__testimonial footer {
+  font-style: normal;
+  font-size: 0.78rem;
+  color: var(--color-muted);
+  margin-top: 6px;
+}
+
+/* ==========================================================================
+   8. MAIN CONTENT SECTION (home page – centre column)
+   ========================================================================== */
+
+.main-content {
+  background-color: var(--color-white);
+  border: 1px solid rgba(18, 55, 71, 0.1);
+  border-radius: var(--border-radius);
+  padding: 24px 28px;
+  margin-bottom: 24px;
+  box-shadow: var(--box-shadow);
+}
+
+/* Section h2 heading */
+.main-content__heading {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  color: var(--color-purple);
+  margin-bottom: 16px;
+  border-bottom: 2px solid var(--color-gold);
+  padding-bottom: 8px;
+}
+
+/* Sub-heading (h3) */
+.main-content__subheading {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  color: var(--color-purple-dark);
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+/* Ordered list styling */
+.main-content__list {
+  padding-left: 20px;
+  margin-bottom: 16px;
+}
+
+.main-content__list li {
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   9. FLOAT IMAGE (CSS float – not Bootstrap)
+   The image floats LEFT inside the main content, with text wrapping around it.
+   The .clearfix wrapper prevents the section from collapsing below the float.
+   ========================================================================== */
+
+/* Container that wraps the floated image + text paragraphs */
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Floated figure */
+.float-img-left {
+  float: left;                     /* Core CSS float                        */
+  margin: 0 20px 16px 0;          /* Right + bottom margin so text breathes */
+  max-width: 220px;                /* Restrict width so text has room        */
+  border: 2px solid var(--color-gold);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+/* The image inside the floated figure */
+.float-img-left__img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Caption under the floated image */
+.float-img-left__caption {
+  font-size: 0.78rem;
+  color: var(--color-muted);
+  font-style: italic;
+  text-align: center;
+  padding: 6px 8px;
+  background-color: var(--color-light-gray);
+}
+
+/* ==========================================================================
+   10. FOOTER
+   Gradient background (navy → teal) mirroring the header.
+   ========================================================================== */
+
+.site-footer {
+  background: linear-gradient(135deg, var(--color-purple-dark) 0%, var(--color-purple) 100%);
+  color: var(--color-white);
+  padding: 24px 0;
+  margin-top: 32px;
+  border-top: 3px solid var(--color-gold);
+}
+
+.site-footer__copy {
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+  padding: 4px 0;
+}
+
+.site-footer__links {
+  font-size: 0.88rem;
+  margin: 0;
+  padding: 4px 0;
+}
+
+.site-footer__links a {
+  display: inline-block;
+  padding: 4px 8px;
+  margin: 2px 0;
+  border: 1px solid rgba(232, 7, 198, 0.45);
+  border-radius: var(--border-radius);
+  color: var(--color-gold);
+  text-decoration: none;
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.site-footer__links a:hover {
+  color: var(--color-white);
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: var(--color-gold);
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   11. BOOTSTRAP BUTTON OVERRIDES
+   Override btn-primary to use the brand teal + amber accent.
+   ========================================================================== */
+
+.btn-primary {
+  background-color: var(--color-purple) !important;
+  border-color: var(--color-purple) !important;
+  color: var(--color-white) !important;
+  font-family: var(--font-body);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  border-radius: var(--border-radius);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--color-purple-dark) !important;
+  border-color: var(--color-gold) !important;
+  outline: 2px solid var(--color-gold);
+}
+
+/* ==========================================================================
+   12. RESPONSIVE / MEDIA QUERIES
+   ========================================================================== */
+
+/* --- Tablet breakpoint (~768 px) --- */
+@media (max-width: 768px) {
+
+  /* Hero banner shorter on tablet */
+  .hero-banner {
+    max-height: 240px;
+  }
+
+  .hero-banner__img {
+    height: 240px;
+  }
+
+  .hero-banner__slogan {
+    font-size: 1.1rem;
+    padding: 16px;
+  }
+
+  /* Company name slightly smaller */
+  .site-header__company-name {
+    font-size: 1.8rem;
+  }
+
+  /* Float image becomes full-width block on tablet — stop float */
+  .float-img-left {
+    float: none;
+    max-width: 100%;
+    margin: 0 0 16px 0;
+  }
+
+  /* Sidebars & main get full-width on small screens
+     (Bootstrap col-md-* already handles stacking, but we add padding tweaks) */
+  .sidebar,
+  .main-content {
+    padding: 16px;
+  }
+
+  .sidebar__image-links {
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  }
+
+  .site-nav .navbar-toggler {
+    margin: 6px 0;
+  }
+
+  .site-nav .navbar-collapse {
+    padding: 4px 0 10px;
+  }
+
+  .site-nav .navbar-nav {
+    align-items: stretch;
+  }
+
+  .site-nav .nav-link {
+    display: block;
+    margin: 4px 0;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .site-nav .navbar-toggler {
+    display: flex;
+  }
+}
+
+/* --- Mobile breakpoint (~480 px) --- */
+@media (max-width: 480px) {
+
+  /* Minimal hero on very small screens */
+  .hero-banner {
+    max-height: 160px;
+  }
+
+  .hero-banner__img {
+    height: 160px;
+  }
+
+  .hero-banner__slogan {
+    font-size: 0.9rem;
+  }
+
+  /* Company name stacks well */
+  .site-header__company-name {
+    font-size: 1.5rem;
+  }
+
+  /* Logo slightly smaller */
+  .site-header__logo {
+    height: 52px;
+  }
+
+  /* Page wrapper – remove extra padding on tiny screens */
+  .page-wrapper {
+    padding-top: 12px;
+    padding-bottom: 24px;
+  }
+
+  /* Footer links wrap gracefully */
+  .site-footer__links {
+    text-align: center !important;
+  }
+
+  .site-footer__copy {
+    text-align: center !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-ball {
+    animation: none;
+  }
+}

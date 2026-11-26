@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Explore Event Spot's trusted event vendors for catering, photography, decor, makeup, DJ entertainment, and venues." />
+  <link rel="icon" type="image/svg+xml" href="images/event-spot-mark.svg" />
+  <title>Event Spot | Vendors – Trusted Event Specialists</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="styles/normalize.css" />
+  <link rel="stylesheet" href="styles/content.css" />
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <div class="site-header__brand">
+        <img src="images/event-spot-mark.svg"
+             alt="Event Spot company logo"
+             class="site-header__logo" />
+        <div class="site-header__text">
+          <h1 class="site-header__company-name">Event&nbsp;Spot</h1>
+          <p class="site-header__tagline">Professional event planning for moments that last a&nbsp;lifetime</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="navbar navbar-expand-md navbar-dark site-nav" aria-label="Main navigation">
+    <div class="container">
+      <button class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#mainNavbar"
+              aria-controls="mainNavbar"
+              aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="weddings.html">Weddings</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="corporate-events.html">Corporate Events</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="vendors.html">Vendors</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact &amp; Book</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container page-wrapper">
+    <div class="row">
+
+      <aside class="col-md-3 content-sidebar" aria-label="Page navigation and vendor categories">
+        <h2 class="content-sidebar__heading">Explore</h2>
+        <ul class="content-sidebar__list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="weddings.html">Weddings</a></li>
+          <li><a href="corporate-events.html">Corporate Events</a></li>
+          <li><a href="contact.html">Contact &amp; Book</a></li>
+        </ul>
+
+        <h3 class="content-sidebar__heading content-sidebar__heading--sub">Vendor Categories</h3>
+        <ul class="content-sidebar__list">
+          <li><a href="#catering">Catering</a></li>
+          <li><a href="#photography">Photography</a></li>
+          <li><a href="#decoration">Decoration</a></li>
+          <li><a href="#makeup">Makeup</a></li>
+          <li><a href="#dj">DJ &amp; Entertainment</a></li>
+          <li><a href="#venue">Venues</a></li>
+        </ul>
+        <div class="content-sidebar__cta mt-3">
+          <a href="contact.html#booking-enquiry" class="btn btn-primary w-100">Plan Your Event</a>
+        </div>
+      </aside>
+
+      <main class="col-md-9 content-main" aria-label="Event vendor directory">
+        <h2 class="content-main__heading">Our Event Vendors</h2>
+        <p class="content-main__intro">
+          The right team makes every celebration exceptional. Explore our trusted event professionals
+          and tell us what you need; we will help coordinate the details for your occasion.
+        </p>
+
+        <section class="vendor-grid" aria-label="Available event vendor services">
+          <article class="vendor-card" id="catering">
+            <img class="vendor-card__image"
+                 src="images/wedding-stage.jpg"
+                 alt="A professionally arranged event dining table with floral centerpieces" />
+            <div class="vendor-card__body">
+              <h3 class="vendor-card__heading">Catering</h3>
+              <p>Menus and service for every occasion, with options tailored to your guests, style, and dietary needs.</p>
+              <a href="contact.html#booking-enquiry" class="btn btn-primary btn-sm">Enquire about catering</a>
+            </div>
+          </article>
+
+          <article class="vendor-card" id="photography">
+            <img class="vendor-card__image"
+                 src="images/carousel-1.jpg"
+                 alt="Close-up wedding photograph of a couple's hands and rings with a bouquet" />
+            <div class="vendor-card__body">
+              <h3 class="vendor-card__heading">Photography</h3>
+              <p>Experienced photographers capture the key moments, atmosphere, and details of your event.</p>
+              <a href="contact.html#booking-enquiry" class="btn btn-primary btn-sm">Enquire about photography</a>
+            </div>
+          </article>
+
+          <article class="vendor-card" id="decoration">
+            <img class="vendor-card__image"
+                 src="images/party-decor.jpg"
+                 alt="Colorful balloons arranged as festive event decoration" />
+            <div class="vendor-card__body">
+              <h3 class="vendor-card__heading">Decoration</h3>
+              <p>Thoughtful decor, floral styling, and event layouts designed around your vision and venue.</p>
+              <a href="contact.html#booking-enquiry" class="btn btn-primary btn-sm">Enquire about decoration</a>
+            </div>
+          </article>
+
+          <article class="vendor-card" id="makeup">
+            <img class="vendor-card__image"
+                 src="images/carousel-4.jpg"
+                 alt="Bride and groom at an outdoor wedding celebration" />
+            <div class="vendor-card__body">
+              <h3 class="vendor-card__heading">Makeup</h3>
+              <p>Professional makeup services to help hosts, wedding parties, and guests feel event-ready.</p>
+              <a href="contact.html#booking-enquiry" class="btn btn-primary btn-sm">Enquire about makeup</a>
+            </div>
+          </article>
+
+          <article class="vendor-card" id="dj">
+            <img class="vendor-card__image"
+                 src="images/concert.jpg"
+                 alt="DJ performing with illuminated turntables at an event" />
+            <div class="vendor-card__body">
+              <h3 class="vendor-card__heading">DJ &amp; Entertainment</h3>
+              <p>Music and entertainment tailored to your audience, schedule, and the energy you want to create.</p>
+              <a href="contact.html#booking-enquiry" class="btn btn-primary btn-sm">Enquire about entertainment</a>
+            </div>
+          </article>
+
+          <article class="vendor-card" id="venue">
+            <img class="vendor-card__image"
+                 src="images/conference-hall.jpg"
+                 alt="Spacious event venue set up for a professional gathering" />
+            <div class="vendor-card__body">
+              <h3 class="vendor-card__heading">Venues</h3>
+              <p>Venue options for celebrations and business events, matched to your guest count and requirements.</p>
+              <a href="contact.html#booking-enquiry" class="btn btn-primary btn-sm">Enquire about venues</a>
+            </div>
+          </article>
+        </section>
+      </main>
+
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <p class="site-footer__copy">&copy; 2024 Event&nbsp;Spot. All rights&nbsp;reserved.</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <p class="site-footer__links">
+            <a href="index.html">Home</a>&nbsp;|&nbsp;
+            <a href="weddings.html">Weddings</a>&nbsp;|&nbsp;
+            <a href="corporate-events.html">Corporate</a>&nbsp;|&nbsp;
+            <a href="vendors.html" aria-current="page">Vendors</a>&nbsp;|&nbsp;
+            <a href="contact.html">Contact</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

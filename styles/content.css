@@ -1,0 +1,975 @@
+/*
+ * content.css — Shared Styles for All Content Pages
+ * ===================================================
+ * Load order: Bootstrap 5 → normalize.css → THIS FILE
+ *
+ * Used by: weddings.html, corporate-events.html, contact.html
+ *
+ * This stylesheet shares the colour palette and typography
+ * from main.css and adds styles specific to the two-column
+ * content page layout, carousel, audio player, figures,
+ * articles, blockquotes, and the contact form.
+ *
+ * COLOUR PALETTE (same as main.css)
+ * ──────────────
+ *   Teal        : #18776E
+ *   Amber       : #F2B84B
+ *   White       : #FFFFFF
+ *   Light Gray  : #F7F7F2
+ *   Dark Text   : #1A1A2E
+ */
+
+/* ==========================================================================
+   1. CSS CUSTOM PROPERTIES (variables – same palette as main.css)
+   ========================================================================== */
+
+:root {
+  --color-purple:      #18776E;
+  --color-purple-dark: #123747;
+  --color-gold:        #F2B84B;
+  --color-gold-dark:   #B87921;
+  --color-white:       #FFFFFF;
+  --color-light-gray:  #F7F7F2;
+  --color-dark-text:   #1A1A2E;
+  --color-muted:       #6B7280;
+
+  --font-heading:  'Playfair Display', Georgia, serif;
+  --font-body:     'Lato', 'Segoe UI', Arial, sans-serif;
+
+  --border-radius: 6px;
+  --box-shadow:    0 2px 12px rgba(18, 55, 71, 0.12);
+}
+
+/* ==========================================================================
+   2. GLOBAL BASE STYLES
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 15px;              /* Required: 15 px body font            */
+  line-height: 1.6;             /* Required: comfortable reading        */
+  color: var(--color-dark-text);
+  background-color: var(--color-light-gray);
+  margin: 0;
+  padding: 68px 0 0;
+}
+
+html {
+  scroll-padding-top: 68px;
+}
+
+@media (max-width: 767.98px) {
+  body {
+    padding-top: 60px;
+  }
+
+  html {
+    scroll-padding-top: 60px;
+  }
+}
+
+/* Headings – Playfair Display */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-purple);
+  margin-top: 0;
+}
+
+/* Links */
+a {
+  color: var(--color-purple);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover,
+a:focus {
+  color: var(--color-gold-dark);
+  text-decoration: underline;
+}
+
+/* Responsive images */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ==========================================================================
+   3. PAGE-WIDTH CONSTRAINT
+   ========================================================================== */
+
+.page-wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+  padding-top: 24px;
+  padding-bottom: 40px;
+}
+
+/* ==========================================================================
+   4. SITE HEADER (identical to main.css)
+   ========================================================================== */
+
+.site-header {
+  background: linear-gradient(135deg, var(--color-purple) 0%, var(--color-purple-dark) 100%);
+  padding: 24px 0 20px;
+  border-bottom: 3px solid var(--color-gold);
+}
+
+.site-header__inner {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.site-header__brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.site-header__logo {
+  width: auto;
+  height: 72px;
+  border-radius: 50%;
+  border: 2px solid var(--color-gold);
+}
+
+.site-header__company-name {
+  font-family: var(--font-heading);
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--color-gold);
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.site-header__tagline {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--color-white);
+  margin: 4px 0 0;
+  opacity: 0.9;
+}
+
+/* ==========================================================================
+   5. BOOTSTRAP NAVBAR OVERRIDES (identical to main.css)
+   ========================================================================== */
+
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1030;
+  width: 100%;
+  background-color: var(--color-purple-dark);
+  border-bottom: 2px solid var(--color-gold);
+}
+
+.site-nav .nav-link {
+  display: inline-block;
+  color: rgba(255, 255, 255, 0.85) !important;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  padding: 10px 16px !important;
+  margin: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--border-radius);
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.site-nav .nav-link:hover,
+.site-nav .nav-link:focus {
+  color: var(--color-gold) !important;
+  background-color: rgba(255, 255, 255, 0.07);
+  border-color: var(--color-gold);
+}
+
+/* Active page link */
+.site-nav .nav-link.active {
+  color: var(--color-gold) !important;
+  font-weight: 700;
+  border-color: var(--color-gold);
+  background-color: rgba(255, 255, 255, 0.07);
+}
+
+.site-nav .navbar-toggler {
+  width: 48px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  border-color: var(--color-gold);
+  border-width: 2px;
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.site-nav .navbar-toggler-icon {
+  display: block;
+  width: 24px;
+  height: 20px;
+  background-image: linear-gradient(
+    to bottom,
+    var(--color-gold) 0 2px,
+    transparent 2px 9px,
+    var(--color-gold) 9px 11px,
+    transparent 11px 18px,
+    var(--color-gold) 18px 20px
+  );
+  background-size: 24px 20px;
+  filter: none;
+}
+
+/* ==========================================================================
+   6. CONTENT SIDEBAR (LEFT ASIDE – col-md-3)
+   ========================================================================== */
+
+.content-sidebar {
+  background-color: var(--color-white);
+  border: 1px solid rgba(18, 55, 71, 0.15);
+  border-radius: var(--border-radius);
+  padding: 20px 16px;
+  margin-bottom: 24px;
+  box-shadow: var(--box-shadow);
+}
+
+/* Sidebar heading */
+.content-sidebar__heading {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-purple);
+  border-bottom: 2px solid var(--color-gold);
+  padding-bottom: 6px;
+  margin-bottom: 12px;
+}
+
+.content-sidebar__heading--sub {
+  font-size: 0.95rem;
+  margin-top: 20px;
+}
+
+/* Sidebar navigation link list */
+.content-sidebar__list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 12px;
+}
+
+.content-sidebar__list li {
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.content-sidebar__list a {
+  display: block;
+  padding: 9px 10px;
+  border: 1px solid rgba(18, 55, 71, 0.16);
+  border-radius: var(--border-radius);
+  background-color: var(--color-light-gray);
+  color: var(--color-purple);
+  font-weight: 600;
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.content-sidebar__list a:hover,
+.content-sidebar__list a:focus-visible {
+  color: var(--color-gold-dark);
+  border-color: var(--color-gold);
+  background-color: var(--color-white);
+  text-decoration: none;
+}
+
+.content-sidebar__list a:focus-visible,
+.site-nav .nav-link:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+.content-sidebar__address a,
+.content-sidebar__pdf-note a {
+  display: inline-block;
+  padding: 1px 5px;
+  border: 1px solid rgba(18, 55, 71, 0.2);
+  border-radius: 4px;
+  background-color: var(--color-light-gray);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.content-sidebar__address a:hover,
+.content-sidebar__address a:focus-visible,
+.content-sidebar__pdf-note a:hover,
+.content-sidebar__pdf-note a:focus-visible {
+  border-color: var(--color-gold);
+  color: var(--color-gold-dark);
+  text-decoration: none;
+}
+
+.content-main a:not(.btn) {
+  display: inline-block;
+  padding: 1px 5px;
+  border: 1px solid rgba(18, 55, 71, 0.2);
+  border-radius: 4px;
+  background-color: var(--color-light-gray);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.content-main a:not(.btn):hover,
+.content-main a:not(.btn):focus-visible {
+  border-color: var(--color-gold);
+  color: var(--color-gold-dark);
+  text-decoration: none;
+}
+
+.content-main a:not(.btn):focus-visible,
+.content-sidebar__address a:focus-visible,
+.content-sidebar__pdf-note a:focus-visible,
+.site-footer__links a:focus-visible {
+  outline: 2px solid var(--color-gold-dark);
+  outline-offset: 2px;
+}
+
+/* CTA button in sidebar */
+.content-sidebar__cta .btn {
+  font-size: 0.9rem;
+}
+
+/* Small PDF note below the button */
+.content-sidebar__pdf-note {
+  color: var(--color-muted);
+}
+
+/* Address element in sidebar */
+.content-sidebar__address {
+  font-style: normal;
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: var(--color-dark-text);
+}
+
+.content-sidebar__address a {
+  color: var(--color-purple);
+}
+
+.content-sidebar__address .whatsapp-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #25D366;
+  border-color: rgba(37, 211, 102, 0.45);
+  background-color: #F2FFF6;
+}
+
+.content-sidebar__address .whatsapp-link:hover,
+.content-sidebar__address .whatsapp-link:focus-visible {
+  color: #128C7E;
+  border-color: #25D366;
+  background-color: #E8FFF0;
+}
+
+.whatsapp-link__icon {
+  flex: 0 0 auto;
+}
+
+/* Bootstrap list-group overrides for sidebar package lists */
+.content-sidebar .list-group-item {
+  font-size: 0.85rem;
+  padding: 0;
+  color: var(--color-dark-text);
+  border-color: rgba(18, 55, 71, 0.12);
+  background-color: transparent;
+}
+
+.content-sidebar .list-group-item a {
+  display: block;
+  padding: 9px 10px;
+  color: var(--color-purple);
+  font-weight: 600;
+}
+
+.content-sidebar .list-group-item a span {
+  display: block;
+  color: var(--color-muted);
+  font-size: 0.78rem;
+  font-weight: 400;
+}
+
+.content-sidebar .list-group-item a:hover,
+.content-sidebar .list-group-item a:focus-visible {
+  color: var(--color-gold-dark);
+  background-color: var(--color-light-gray);
+  text-decoration: none;
+}
+
+.content-sidebar .list-group-item a:focus-visible {
+  outline: 2px solid var(--color-gold-dark);
+  outline-offset: -2px;
+}
+
+/* ==========================================================================
+   7. MAIN CONTENT AREA (col-md-9)
+   ========================================================================== */
+
+.content-main {
+  background-color: var(--color-white);
+  border: 1px solid rgba(18, 55, 71, 0.1);
+  border-radius: var(--border-radius);
+  padding: 28px 32px;
+  margin-bottom: 24px;
+  box-shadow: var(--box-shadow);
+}
+
+/* Page heading (h2) */
+.content-main__heading {
+  font-family: var(--font-heading);
+  font-size: 1.9rem;
+  color: var(--color-purple);
+  margin-bottom: 10px;
+  border-bottom: 2px solid var(--color-gold);
+  padding-bottom: 8px;
+}
+
+/* Intro paragraph just below the h2 */
+.content-main__intro {
+  font-size: 1.0rem;
+  color: var(--color-dark-text);
+  margin-bottom: 24px;
+  font-style: italic;
+}
+
+/* ==========================================================================
+   8. VENDOR DIRECTORY
+   ========================================================================== */
+
+.vendor-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.vendor-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border: 1px solid rgba(18, 55, 71, 0.12);
+  border-top: 3px solid var(--color-gold);
+  border-radius: var(--border-radius);
+  background-color: var(--color-light-gray);
+  overflow: hidden;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.vendor-card:hover {
+  box-shadow: var(--box-shadow);
+  transform: translateY(-2px);
+}
+
+.vendor-card__image {
+  display: block;
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.vendor-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 16px;
+}
+
+.vendor-card__heading {
+  margin-bottom: 8px;
+  color: var(--color-purple-dark);
+  font-size: 1.1rem;
+}
+
+.vendor-card p {
+  flex: 1;
+  margin-bottom: 16px;
+  font-size: 0.92rem;
+}
+
+.vendor-card .btn {
+  margin-top: auto;
+}
+
+/* ==========================================================================
+   9. BOOTSTRAP CAROUSEL CUSTOMISATION (weddings.html)
+   ========================================================================== */
+
+/* Wrapper adds a rounded border and shadow around the whole carousel */
+.carousel-wrapper {
+  border-radius: var(--border-radius);
+  overflow: hidden;             /* Clips slide corners to border-radius  */
+  border: 2px solid var(--color-gold);
+  box-shadow: 0 4px 20px rgba(18, 55, 71, 0.2);
+  margin-bottom: 28px;
+}
+
+/*
+  Carousel images:
+  - d-block w-100 (Bootstrap) makes images block-level and 100% wide.
+  - We add a fixed height + object-fit: cover so all slides look consistent
+    regardless of the original image dimensions.
+*/
+.carousel-img {
+  height: 420px;                 /* Fixed height for all slides          */
+  object-fit: cover;             /* Fill the area, crop if needed         */
+  object-position: center;
+}
+
+/* Caption overlay – semi-transparent dark box */
+.carousel-caption {
+  background: rgba(26, 26, 46, 0.65);
+  border-radius: var(--border-radius);
+  padding: 12px 20px;
+  bottom: 24px;
+}
+
+.carousel-caption h3 {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  color: var(--color-gold);
+  margin-bottom: 4px;
+}
+
+.carousel-caption p {
+  font-size: 0.9rem;
+  color: var(--color-white);
+  margin: 0;
+}
+
+/* Indicator buttons – gold dots */
+.carousel-indicators [data-bs-target] {
+  background-color: var(--color-gold);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  opacity: 0.6;
+}
+
+.carousel-indicators .active {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+/* ==========================================================================
+   10. FIGURE & FIGCAPTION
+   ========================================================================== */
+
+.content-figure {
+  margin: 0 0 24px;
+  border: 2px solid var(--color-gold);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+/* The image inside the figure */
+.content-figure__img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Caption bar below the figure image */
+.content-figure__caption {
+  display: block;
+  font-size: 0.82rem;
+  font-style: italic;
+  color: var(--color-muted);
+  text-align: center;
+  padding: 8px 12px;
+  background-color: var(--color-light-gray);
+  border-top: 1px solid rgba(18, 55, 71, 0.12);
+}
+
+/* ==========================================================================
+   11. ARTICLE SECTIONS (service descriptions, timelines)
+   ========================================================================== */
+
+.content-article {
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px dashed rgba(18, 55, 71, 0.15);
+}
+
+.content-article:last-of-type {
+  border-bottom: none;
+}
+
+/* Article h3 heading */
+.content-article__heading {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  color: var(--color-purple-dark);
+  margin-bottom: 10px;
+}
+
+/* Bullet/numbered lists inside articles */
+.content-article__list {
+  padding-left: 20px;
+  margin-bottom: 10px;
+}
+
+.content-article__list li {
+  margin-bottom: 7px;
+  font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   12. BLOCKQUOTE / TESTIMONIAL
+   ========================================================================== */
+
+.content-quote {
+  background-color: var(--color-light-gray);
+  border-left: 4px solid var(--color-gold);
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  padding: 16px 20px;
+  margin: 20px 0 28px;
+}
+
+.content-quote p {
+  font-family: var(--font-heading);
+  font-size: 1.0rem;
+  font-style: italic;
+  color: var(--color-dark-text);
+  margin: 0 0 8px;
+}
+
+.content-quote .blockquote-footer {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}
+
+/* ==========================================================================
+   13. HTML5 AUDIO PLAYER SECTION (corporate-events.html)
+   ========================================================================== */
+
+.audio-section {
+  background-color: var(--color-light-gray);
+  border: 1px solid rgba(18, 55, 71, 0.15);
+  border-radius: var(--border-radius);
+  padding: 20px 24px;
+  margin-bottom: 28px;
+}
+
+/* Section heading */
+.audio-section__heading {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  color: var(--color-purple);
+  margin-bottom: 8px;
+}
+
+.audio-section__text {
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+}
+
+/* The <audio> player element – make it full-width */
+.audio-section__player {
+  width: 100%;
+  display: block;
+  border-radius: var(--border-radius);
+  outline: 2px solid var(--color-purple);
+}
+
+/* ==========================================================================
+   14. CALL-TO-ACTION BLOCKS
+   ========================================================================== */
+
+.content-cta {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(18, 55, 71, 0.15);
+}
+
+.content-cta p {
+  font-size: 1.0rem;
+  margin: 0;
+}
+
+/* ==========================================================================
+   15. CONTACT FORM (contact.html)
+   ========================================================================== */
+
+/* Wraps the form with a subtle background */
+.contact-form-section {
+  background-color: var(--color-light-gray);
+  border: 1px solid rgba(18, 55, 71, 0.15);
+  border-radius: var(--border-radius);
+  padding: 24px 28px;
+  margin-bottom: 28px;
+}
+
+/* Section heading above the form */
+.contact-form-section__heading {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  color: var(--color-purple);
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--color-gold);
+  padding-bottom: 8px;
+}
+
+/* The form itself */
+.contact-form {
+  /* Bootstrap utility classes handle most of the form layout;
+     here we just set the base font */
+  font-family: var(--font-body);
+}
+
+/* Override Bootstrap's form-control focus ring to match brand colours */
+.contact-form .form-control:focus,
+.contact-form .form-select:focus {
+  border-color: var(--color-purple);
+  box-shadow: 0 0 0 0.2rem rgba(24, 119, 110, 0.25);
+}
+
+/* Form labels – slightly bold */
+.contact-form .form-label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-dark-text);
+  margin-bottom: 4px;
+}
+
+/* Submit button – inherits .btn-primary override */
+.contact-form__submit {
+  min-width: 200px;
+}
+
+/* Additional contact info section below the form */
+.contact-info__heading {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  color: var(--color-purple-dark);
+}
+
+.contact-map {
+  padding: 20px;
+  border: 1px solid rgba(18, 55, 71, 0.15);
+  border-radius: var(--border-radius);
+  background-color: var(--color-white);
+}
+
+.contact-map__heading {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  color: var(--color-purple-dark);
+  margin-bottom: 12px;
+}
+
+.contact-map__frame {
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.contact-map__frame iframe {
+  display: block;
+  width: 100%;
+  height: 450px;
+  border: 0;
+  margin-bottom: 10px;
+}
+
+/* ==========================================================================
+   16. BOOTSTRAP BUTTON OVERRIDES (same as main.css)
+   ========================================================================== */
+
+.btn-primary {
+  background-color: var(--color-purple) !important;
+  border-color: var(--color-purple) !important;
+  color: var(--color-white) !important;
+  font-family: var(--font-body);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  border-radius: var(--border-radius);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--color-purple-dark) !important;
+  border-color: var(--color-gold) !important;
+  outline: 2px solid var(--color-gold);
+}
+
+/* ==========================================================================
+   17. FOOTER (identical structure to main.css)
+   ========================================================================== */
+
+.site-footer {
+  background: linear-gradient(135deg, var(--color-purple-dark) 0%, var(--color-purple) 100%);
+  color: var(--color-white);
+  padding: 24px 0;
+  margin-top: 32px;
+  border-top: 3px solid var(--color-gold);
+}
+
+.site-footer__copy {
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+  padding: 4px 0;
+}
+
+.site-footer__links {
+  font-size: 0.88rem;
+  margin: 0;
+  padding: 4px 0;
+}
+
+.site-footer__links a {
+  display: inline-block;
+  padding: 4px 8px;
+  margin: 2px 0;
+  border: 1px solid rgba(242, 184, 75, 0.45);
+  border-radius: var(--border-radius);
+  color: var(--color-gold);
+  text-decoration: none;
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.site-footer__links a:hover {
+  color: var(--color-white);
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: var(--color-gold);
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   18. RESPONSIVE / MEDIA QUERIES
+   ========================================================================== */
+
+/* --- Tablet breakpoint (~768 px) --- */
+@media (max-width: 768px) {
+
+  /* Header company name smaller on tablet */
+  .site-header__company-name {
+    font-size: 1.8rem;
+  }
+
+  /* Carousel shorter on tablet */
+  .carousel-img {
+    height: 260px;
+  }
+
+  /* Figure image shorter on tablet */
+  .content-figure__img {
+    height: 200px;
+  }
+
+  /* Main content gets narrower padding */
+  .content-main {
+    padding: 18px 16px;
+  }
+
+  /* Sidebar padding reduced */
+  .content-sidebar {
+    padding: 16px 12px;
+  }
+
+  .vendor-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .site-nav .navbar-toggler {
+    margin: 6px 0;
+  }
+
+  .site-nav .navbar-collapse {
+    padding: 4px 0 10px;
+  }
+
+  .site-nav .navbar-nav {
+    align-items: stretch;
+  }
+
+  .site-nav .nav-link {
+    display: block;
+    margin: 4px 0;
+  }
+
+  /* Page heading slightly smaller */
+  .content-main__heading {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .site-nav .navbar-toggler {
+    display: flex;
+  }
+}
+
+/* --- Mobile breakpoint (~480 px) --- */
+@media (max-width: 480px) {
+
+  /* Company name stacks on small screens */
+  .site-header__company-name {
+    font-size: 1.4rem;
+  }
+
+  .site-header__logo {
+    height: 52px;
+  }
+
+  /* Carousel compact on mobile */
+  .carousel-img {
+    height: 200px;
+  }
+
+  /* Captions hidden on small screens (Bootstrap d-none d-md-block handles this) */
+
+  /* Figure image compact on mobile */
+  .content-figure__img {
+    height: 160px;
+  }
+
+  /* Page wrapper padding trimmed */
+  .page-wrapper {
+    padding-top: 12px;
+    padding-bottom: 24px;
+  }
+
+  /* Full-width buttons on mobile */
+  .contact-form__submit {
+    width: 100%;
+  }
+
+  /* Compact map for narrow screens */
+  .contact-map {
+    padding: 12px;
+  }
+
+  .contact-map__frame iframe {
+    height: 300px;
+  }
+
+  /* Footer centred on mobile */
+  .site-footer__links,
+  .site-footer__copy {
+    text-align: center !important;
+  }
+
+  /* Audio player full width (already set, just confirming) */
+  .audio-section__player {
+    width: 100%;
+  }
+}
